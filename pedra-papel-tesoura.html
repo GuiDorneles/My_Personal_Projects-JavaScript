@@ -1,0 +1,82 @@
+<html>
+<button id="pedra" style="position:absolute; left:550px; top:170px; width:200px; height: 120px; font-size: 65px; padding: 10px; border-radius: 5px; border: 3px solid black;">🗿</button>
+
+<button id="papel" style="position:absolute; left:820px; top:170px; width:200px; height: 120px; font-size: 65px; padding: 10px; border-radius: 5px; border: 3px solid black;">📄</button>
+
+<button id="tesoura" style="position:absolute; left:1090px; top:170px; width:200px; height: 120px; font-size: 65px; padding: 10px; border-radius: 5px; border: 3px solid black;">✂️</button>
+
+    <script>
+        let botaoPedra = document.getElementById("pedra");
+        let botaoPapel = document.getElementById("papel");
+        let botaoTesoura = document.getElementById("tesoura");
+
+        let escolha;
+
+        function clicaBotao() {
+            botaoPedra.onclick = function() {
+                escolhaAleatoria();
+                alert("Você escolheu pedra. O computador escolheu " + escolha);
+                
+                if (escolha == "papel") {
+                alert("Você perdeu!");
+
+                } else if (escolha == "tesoura") {
+                alert("Você ganhou!");
+
+                } else {
+                alert("Empate!");
+                }
+            }
+            botaoPapel.onclick = function() {
+                escolhaAleatoria();
+                alert("Você escolheu papel. O computador escolheu " + escolha);
+
+                if (escolha == "tesoura") {
+                alert("Você perdeu!");
+
+                } else if (escolha == "pedra") {
+                alert("Você ganhou!");
+
+                } else {
+                alert("Empate!");
+                }
+            }
+            botaoTesoura.onclick = function() {
+                escolhaAleatoria();
+                alert("Você escolheu tesoura. O computador escolheu " + escolha);
+
+                if (escolha == "pedra") {
+                alert("Você perdeu!");
+
+                } else if (escolha == "papel") {
+                alert("Você ganhou!");
+                
+                } else {
+                alert("Empate!");
+                }
+            }
+        }
+
+        function numeroAleatorio() {
+            return parseInt(Math.random() * 10);
+        }
+
+        function escolhaAleatoria() {
+            var numero = numeroAleatorio();
+
+            if (numero > 0 && numero <= 3){
+                escolha = "pedra";
+            } else if (4 <= numero && numero <= 6){
+                escolha = "papel";
+            } else if (7 <= numero){
+                escolha = "tesoura";
+            } else {
+                escolhaAleatoria();
+            }
+            console.log(numero);
+        }
+
+        clicaBotao();
+    </script>
+
+</html>

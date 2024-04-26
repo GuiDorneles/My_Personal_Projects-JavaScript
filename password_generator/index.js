@@ -9,7 +9,7 @@ function generatePassword(){
     const includeNumbers = numberBox.checked;
     const includeSymbols = symbolBox.checked;
 
-    let length = document.getElementById("passwordLength").value;
+    let length = document.getElementById("password-length").value;
     
     const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
     const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -25,10 +25,12 @@ function generatePassword(){
     allowedChars += includeSymbols ? symbolChars : "";
 
     if(length <= 0){
-        return `(password length must be at least 1)`;
+        document.getElementById("password").textContent = "Password length must be at least 1";
+        return;
     }
     if(allowedChars.length === 0){
-        return `(At least 1 set of characters needs to be selected)`;
+        document.getElementById("password").textContent = "At least 1 set of characters needs to be selected";
+        return;
     }
 
     for(let i = 0; i < length; i++){
@@ -38,9 +40,3 @@ function generatePassword(){
 
     document.getElementById("password").textContent = password;
 }
-
-/*
-const password = generatePassword(passwordLength, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
-
-console.log(`Generated password: ${password}`);
-*/
